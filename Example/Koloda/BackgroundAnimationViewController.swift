@@ -35,11 +35,11 @@ class BackgroundAnimationViewController: UIViewController {
     
     //MARK: IBActions
     @IBAction func leftButtonTapped() {
-        kolodaView?.swipe(SwipeResultDirection.left)
+        kolodaView?.swipe(.left)
     }
     
     @IBAction func rightButtonTapped() {
-        kolodaView?.swipe(SwipeResultDirection.right)
+        kolodaView?.swipe(.right)
     }
     
     @IBAction func undoButtonTapped() {
@@ -80,6 +80,10 @@ extension BackgroundAnimationViewController: KolodaViewDelegate {
 
 // MARK: KolodaViewDataSource
 extension BackgroundAnimationViewController: KolodaViewDataSource {
+    
+    func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
+        return .default
+    }
     
     func kolodaNumberOfCards(_ koloda: KolodaView) -> Int {
         return numberOfCards
